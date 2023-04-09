@@ -25,6 +25,20 @@
     <include file="config/liquibase/changelog/20230409110415_added_entity_EventRule.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20230409110416_added_entity_Category.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20230409110417_added_entity_DataSource.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230409113504_added_entity_AlarmLevel.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230409113505_added_entity_AlarmInfo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230409113506_added_entity_AlarmRule.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230409113507_added_entity_AlarmContact.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230409113508_added_entity_EventRule.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230409113509_added_entity_Category.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230409113510_added_entity_DataSource.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230409121522_added_entity_AlarmLevel.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230409121523_added_entity_AlarmInfo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230409121524_added_entity_AlarmRule.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230409121525_added_entity_AlarmContact.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230409121526_added_entity_EventRule.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230409121527_added_entity_Category.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230409121528_added_entity_DataSource.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20230409092013_added_entity_constraints_AlarmInfo.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20230409092014_added_entity_constraints_AlarmRule.xml" relativeToChangelogFile="false"/>
@@ -32,6 +46,12 @@
     <include file="config/liquibase/changelog/20230409110412_added_entity_constraints_AlarmInfo.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20230409110413_added_entity_constraints_AlarmRule.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20230409110415_added_entity_constraints_EventRule.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230409113505_added_entity_constraints_AlarmInfo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230409113506_added_entity_constraints_AlarmRule.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230409113508_added_entity_constraints_EventRule.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230409121523_added_entity_constraints_AlarmInfo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230409121524_added_entity_constraints_AlarmRule.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230409121526_added_entity_constraints_EventRule.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

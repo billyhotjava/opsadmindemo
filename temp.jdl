@@ -1,0 +1,112 @@
+
+entity AlarmLevel {
+    name String
+    color String
+    description String
+}
+
+entity AlarmInfo{
+    uuid String
+    name String
+    info String
+    checked Boolean
+    createdTime ZonedDateTime
+    createdBy String
+    modifiedTime ZonedDateTime
+    modifiedBy String
+    alertTime ZonedDateTime
+    alertDoc String
+    esDocumentId String
+    esIndexName String
+}
+
+entity AlarmRule{
+    name String
+    description String
+    alarmType String
+    conf String
+    createdBy String
+    createTime ZonedDateTime
+    modifiedBy String
+    modifiedTime ZonedDateTime
+    status String
+}
+
+entity AlarmContact{
+    title String
+    name String
+    content String
+    type ZonedDateTime
+    contactWay String
+    createdTime ZonedDateTime
+    createdBy String
+    modifiedTime String
+    modifiedBy String
+}
+
+
+entity EventRule{
+    name String
+    alias String
+    eventType String
+    description String
+    eventSample String
+    eventRule String
+    createdTime ZonedDateTime
+    createdBy String
+    modifiedTime ZonedDateTime
+    modifiedBy String
+}
+
+entity Category{
+    name String
+    alias String
+    title String
+    info String
+    description String
+    createdTime ZonedDateTime
+    createdBy String
+    modifiedTime ZonedDateTime
+    modifiedBy String
+    backupCycle String
+}
+
+entity DataSource{
+    name String
+    alias String
+    sourceType String
+    description String
+    url String
+    credential String
+    createdTime ZonedDateTime
+    createdBy String
+    modifiedTime ZonedDateTime
+    modifiedBy String
+    isUsed Boolean
+}
+
+
+
+relationship ManyToOne{
+    AlarmInfo{alarmRule} to AlarmRule
+}
+
+relationship ManyToOne{
+    AlarmRule{eventRule} to EventRule{alarmRule}
+}
+
+relationship ManyToOne{
+    AlarmRule{alarmLevel} to AlarmLevel
+}
+
+relationship ManyToOne{
+    AlarmRule{alarmContact} to AlarmContact
+}
+
+relationship ManyToOne{
+    EventRule{category} to Category
+}
+
+relationship OneToOne {
+    EventRule{dataSource} to DataSource
+}
