@@ -1,10 +1,9 @@
 package com.yzcloud.ops.admin.web.rest;
 
-import static org.elasticsearch.index.query.QueryBuilders.*;
-
 import com.yzcloud.ops.admin.domain.AlarmInfo;
 import com.yzcloud.ops.admin.repository.AlarmInfoRepository;
 import com.yzcloud.ops.admin.repository.search.AlarmInfoSearchRepository;
+import com.yzcloud.ops.admin.service.AlarmInfoService;
 import com.yzcloud.ops.admin.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -16,6 +15,8 @@ import java.util.stream.StreamSupport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -41,9 +42,16 @@ public class AlarmInfoResource {
 
     private final AlarmInfoSearchRepository alarmInfoSearchRepository;
 
-    public AlarmInfoResource(AlarmInfoRepository alarmInfoRepository, AlarmInfoSearchRepository alarmInfoSearchRepository) {
+    private final AlarmInfoService alarmInfoService;
+
+    public AlarmInfoResource(
+        AlarmInfoRepository alarmInfoRepository,
+        AlarmInfoSearchRepository alarmInfoSearchRepository,
+        AlarmInfoService alarmInfoService
+    ) {
         this.alarmInfoRepository = alarmInfoRepository;
         this.alarmInfoSearchRepository = alarmInfoSearchRepository;
+        this.alarmInfoService = alarmInfoService;
     }
 
     /**
@@ -243,13 +251,14 @@ public class AlarmInfoResource {
      * added manually
      */
     @GetMapping(value = { "/query-alarm-infos" })
-    public List<AlarmInfo> getAllAlarmInfosByQuery(
-        @RequestParam(value = "alarmruleid", required = false) Long alarmRuleid,
-        @RequestParam(value = "eventid", required = false) Long eventId,
-        @RequestParam(value = "categaryid", required = false) Long categoryId
+    public Page<AlarmInfo> getAlarmInfoByConditions(
+        @RequestParam(value = "alarmRuleId", required = false) Long alarmRuleid,
+        @RequestParam(value = "eventId", required = false) Long eventId,
+        @RequestParam(value = "alarmLevelId", required = false) Long alarmLevelId,
+        @RequestParam(value = "categoryId", required = false) Long categoryId,
+        @RequestParam(value = "alarmInfoKeywords", required = false) String alarmInfoKeywords,
+        Pageable pageable
     ) {
-        List<AlarmInfo> alarmInfoList = this.alarmInfoRepository.findAllAlarmInfoByQuery(alarmRuleid, eventId, categoryId);
-        log.debug("============  query alarm infos ========:" + alarmInfoList.size());
-        return alarmInfoList;
+        return this.alarmInfoService.findAllByConditions(alarmRuleid, eventId, alarmLevelId, categoryId, alarmInfoKeywords, pageable);
     }
 }

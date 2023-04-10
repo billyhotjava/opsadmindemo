@@ -37,6 +37,10 @@ public class AlarmInfoSpecification implements Specification<AlarmInfo> {
     public Predicate toPredicate(Root<AlarmInfo> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
         List<Predicate> predicates = new ArrayList<>();
 
+        if (alarmInfoKeywords != null) {
+            predicates.add(criteriaBuilder.like(root.get("name"), "%" + alarmInfoKeywords + "%"));
+        }
+
         if (alarmRuleId != null) {
             predicates.add(criteriaBuilder.equal(root.join("alarmRule").get("id"), alarmRuleId));
         }
@@ -51,15 +55,6 @@ public class AlarmInfoSpecification implements Specification<AlarmInfo> {
 
         if (categoryId != null) {
             predicates.add(criteriaBuilder.equal(root.join("alarmRule").join("eventRule").join("category").get("id"), categoryId));
-        }
-
-        if (alarmInfoKeywords != null) {
-            predicates.add(
-                criteriaBuilder.like(
-                    root.join("alarmRule").join("eventRule").join("category").join("alarmInfoKeywords").get("name"),
-                    "%" + alarmInfoKeywords + "%"
-                )
-            );
         }
 
         return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
