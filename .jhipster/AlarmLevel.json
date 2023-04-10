@@ -1,0 +1,28 @@
+{
+  "applications": "*",
+  "changelogDate": "20230409121522",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "alarm_level",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "color",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "AlarmLevel",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

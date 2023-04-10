@@ -1,0 +1,69 @@
+{
+  "applications": "*",
+  "changelogDate": "20230409121524",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "alarm_rule",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "alarmType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "conf",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createTime",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "modifiedBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "modifiedTime",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "AlarmRule",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "eventRule",
+      "otherEntityRelationshipName": "alarmRule",
+      "relationshipName": "eventRule",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "alarmLevel",
+      "relationshipName": "alarmLevel",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "alarmContact",
+      "relationshipName": "alarmContact",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}
